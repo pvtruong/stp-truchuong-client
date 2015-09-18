@@ -1,0 +1,1 @@
+var dmnganhhangModule = new baseInput('dmnganhhang','dmnganhhang',["ten_nganh_hang"],'Danh mục ngành hàng');

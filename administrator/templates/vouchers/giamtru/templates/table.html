@@ -1,0 +1,41 @@
+﻿<div>
+	<div class="table-responsive">
+		<table class="table table-striped  table-hover table-bordered">
+			<tr>
+				<th class='text-center' style='width:30px'>Chọn</th>
+				<th>Nội dung</th>
+				<th>Tiền {{ngMasterData.ma_nt}}</th>
+				<th ng-show="ngMasterData.ma_nt!='VND'">Tiền quy đổi</th>
+			
+			</tr>
+			<tr ng-repeat ="r in ngData">
+				<td class='text-center'>
+					<input type='checkbox' ng-model='r.sel'/>
+				</td>
+				<td  style='cursor:pointer' ng-click='editDetail(r.line)'>
+					<div>{{r.noi_dung}}</div>
+				</td>
+				
+				<td  style='cursor:pointer' ng-click='editDetail(r.line)'>
+					{{r.giam_tru_nt|number}}
+				</td>
+				<td  style='cursor:pointer'  ng-show="ngMasterData.ma_nt!='VND'" ng-click='editDetail(r.line)'>
+					{{r.giam_tru|number}}
+				</td>
+				
+			</tr>
+			<tr ng-show='ngData.length>0'>
+				<td class='total' colspan='2'>Tổng cộng</td>
+				<td class='total' ng-data='ngData' ng-sum='giam_tru_nt' ng-model='ngMasterData.t_giam_tru_nt'>{{ngMasterData.t_giam_tru_nt|number:2}}</td>
+				<td class='total'  ng-data='ngData' ng-sum='giam_tru' ng-model='ngMasterData.t_giam_tru' ng-show="ngMasterData.ma_nt!='VND'">{{ngMasterData.t_giam_tru|number:0}}</td>
+				
+			</tr>
+		</table>
+	</div>
+	<div style='padding-bottom:2px;padding-top:2px'>
+		<div class='btn-group'>
+			<button class='btn btn-sm btn-primary'  ng-click="addDetail()">Mới</button>
+			<button class='btn btn-sm btn-danger' ng-click="deleteRow(ngData)" ng-disabled="isNotRowwSelected(ngData)">Xóa</button>
+		</div>
+	</div>
+</div>

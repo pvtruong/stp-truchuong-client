@@ -1,0 +1,59 @@
+﻿<div class="modal-header">
+	<button type="button" class="close" ng-click ='cancelDetail()' aria-hidden="true"> &times;</button>
+	<h4 class="modal-title" id="detailModalLabel">
+	   Lịch sử giao hàng
+	</h4>
+ </div>
+ <div class="modal-body">
+	<form name="formdetail" novalidate class="css-form form-horizontal">
+		
+		<div class="form-group">
+			<label class="control-label col-sm-2">Lần giao <span class='required' title="Không được trống">(*)</span></label>
+			<div class="col-sm-4">
+				<input type="number" ng-model="dt_current.lan_giao" min='1' class="form-control"  ng-required="true"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2">Nhân viên giao <span class='required' title="Không được trống">(*)</span></label>
+			<div class="col-sm-4">
+				<ng-typeahead 
+					module='dmnv' fields='ma_nv,ten_nv' field-model='ten_nv' field-label='ma_nv'
+					ng-model='dt_current.ten_nv' label='dt_current.ma_nv'  ng-required="true">
+				</ng-typeahead>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2">Ngày giao <span class='required' title="Không được trống">(*)</span></label>
+			<div class="col-sm-4">
+				<ng-datepicker ng-model='dt_current.ngay_giao' ng-required='true'></ng-datepicker>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2">Phương tiện <span class='required' title="Không được trống">(*)</span></label>
+			<div class="col-sm-4">
+				<input type="text" ng-model="dt_current.phuong_tien" class="form-control" ng-required="true"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2">Lý do không giao được</label>
+			<div class="col-sm-4">
+				<input type="text" ng-model="dt_current.ly_do_khong_giao" class="form-control"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2">Nhân viên chuyển</label>
+			<div class="col-sm-4">
+				<ng-typeahead 
+					module='dmnv' fields='ma_nv,ten_nv' field-model='ten_nv' field-label='ma_nv'
+					ng-model='dt_current.ten_nv_chuyen' label='dt_current.ma_nv_chuyen'>
+				</ng-typeahead>
+			</div>
+		</div>
+	</form>
+ </div>
+ <div class="modal-footer">
+	<button type="button" class="btn btn-primary" ng-click="updateDetail()"  ng-disabled="formdetail.$invalid">
+	   Nhận
+	</button>
+	<button type="button" class="btn btn-default" ng-click='cancelDetail()'>Hủy</button>
+ </div>

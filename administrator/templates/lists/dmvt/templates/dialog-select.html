@@ -1,0 +1,26 @@
+﻿<div class="modal-header">
+	<header-dialog-select title="Danh mục vật tư"></header-dialog-select>
+ </div>
+ <div class="modal-body">
+	<div class="table-responsive">
+		<table  class ="table table-striped table-bordered">
+			<tr>
+				<th>
+					Sản phẩm
+				</th>
+				<th>
+					Giá bán
+				</th>
+			</tr>
+			<tr ng-repeat ="item in items" style ='cursor:pointer' ng-click="select(item)">
+				<td>
+					<div><b>{{item.ten_vt}}</b></div>
+					<div><i>{{item.ma_vt}}</i></div>
+				</td>
+				<td>
+					<div><b>{{item.gia_ban_le|number:0}}</b></div>
+				</td>
+			</tr>
+		</table>
+	</div>
+ </div>

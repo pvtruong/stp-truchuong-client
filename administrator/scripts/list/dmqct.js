@@ -1,0 +1,1 @@
+var dmqctModule = new baseInput('dmqct','dmqct',["ma_ct","ten_qct"],'Danh mục quyển chứng từ');

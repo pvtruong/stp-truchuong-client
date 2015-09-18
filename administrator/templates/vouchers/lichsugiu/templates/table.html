@@ -1,0 +1,35 @@
+﻿<div>
+	<div class="table-responsive">
+		<table class="table table-striped  table-hover table-bordered">
+			<tr>
+				<th class='text-center' style='width:30px'>Chọn</th>
+				<th>Lần giữ</th>
+				<th>Nhân viên giữ</th>
+				<th>Ngày giữ</th>
+				
+			</tr>
+			<tr ng-repeat ="r in ngData">
+				<td class='text-center'>
+					<input type='checkbox' ng-model='r.sel'/>
+				</td>
+				<td  style='cursor:pointer' ng-click='editDetail(r.line)'>
+					<div>{{r.lan_giu}}</div>
+				</td>
+				
+				<td  style='cursor:pointer' ng-click='editDetail(r.line)'>
+					<div>{{r.ten_nv}}</div>
+				</td>
+				<td  style='cursor:pointer' ng-click='editDetail(r.line)'>
+					<div>{{r.ngay_giu|date:'dd/MM/yyyy'}}</div>
+				</td>
+				
+			</tr>
+		</table>
+	</div>
+	<div style='padding-bottom:2px;padding-top:2px'>
+		<div class='btn-group'>
+			<button class='btn btn-sm btn-primary'  ng-click="addDetail()">Mới</button>
+			<button class='btn btn-sm btn-danger' ng-click="deleteRow(ngData)" ng-disabled="isNotRowwSelected(ngData)">Xóa</button>
+		</div>
+	</div>
+</div>

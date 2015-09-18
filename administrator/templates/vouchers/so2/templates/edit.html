@@ -1,0 +1,92 @@
+<!--master form-->
+<div>
+	<form name="form" novalidate class ="css-form form-horizontal form-input">
+		<header-form-input></header-form-input>
+		<div class="form-group">
+			<label class="control-label col-sm-2">Số đơn hàng </label>
+			<div class="col-sm-4">
+				<input type="text" style='text-transform:uppercase' name ='so_ct' class="form-control" ng-model='data.so_ct' />
+			</div>
+			
+			<label class="control-label col-sm-2">Ngày <span class='required' title="Ngày chứng từ không được trống">(*)</span></label>
+			<div class="col-sm-4">
+				<ng-datepicker ng-model='data.ngay_ct' ng-required='true' ng-change='getCN(ma_kh)'></ng-datepicker>
+			</div>
+		</div>
+	
+		<div class="form-group">
+			<label class="control-label col-sm-2">Kho xuất <span class='required'>(*)</span></label>
+			<div class="col-sm-4">
+				<ng-typeahead 
+					module='dmkho' fields='ma_kho,ten_kho' field-model='ten_kho' field-label='ma_kho'
+					ng-model='data.ten_kho' label='data.ma_kho' ng-required="true">
+				</ng-typeahead>
+			</div>
+			<label class="control-label col-sm-2">Khách hàng <span class='required'>(*)</span></label>
+			<div class="col-sm-4">
+				<ng-typeahead 
+					module='dmkh' fields='ma_kh,ten_kh' field-model='ten_kh' field-label='ma_kh'
+					ng-model='data.ten_kh' label='data.ma_kh' ng-required="true" on-select ="getCN($item.ma_kh)">
+				</ng-typeahead>
+			</div>
+			
+		</div>
+	
+		<div class="form-group">
+			<label class="control-label col-sm-2">Diễn giải</label>
+			<div class="col-sm-4">
+				<input type="text"  name ='dien_giai' class="form-control" ng-model='data.dien_giai'/>
+			</div>
+			<label class="control-label col-sm-2">Còn nợ</label>
+			<div class="col-sm-4">
+				<input type="text" format="number"  name ='con_no' class="form-control" ng-model='data.con_no' readonly/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2">Ngành hàng <span class='required' title="Ngày chứng từ không được trống">(*)</span></label>
+			<div class="col-sm-4">
+				<ng-typeahead 
+					module='dmnganhhang' fields='_id,ten_nganh_hang' field-model='ten_nganh_hang' field-label='_id'
+					ng-model='data.ten_nganh_hang' label='data.nganh_hang' ng-required="true">
+				</ng-typeahead>
+			</div>
+			
+		</div>
+		<div class="form-group">
+			<div class="col-sm-12">
+			<!--table detail-->
+			<tabset>
+				<tab heading='Chi tiết'>
+					<so2-detail-table ng-master-data='data'></so2-detail-table>
+				</tab>
+				<tab heading="Chiết khấu theo hóa đơn">
+					<div class="form-group">
+						<label class="control-label col-sm-2">Tỷ lệ CK</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" format="number" ng-model="data.ty_le_ck_hd"/>
+						</div>
+					</div>
+					<div class="form-group">
+						
+						<label class="control-label col-sm-2">Tiền CK</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" format="number" ng-model="data.tien_ck_hd"/>
+						</div>
+					</div>
+				</tab>
+				
+				
+				<tab heading='Khuyến mãi'>
+					<ng-khuyenmai ng-data='data.khuyenmais'  ng-master-data='data'></ng-khuyenmai>
+				</tab>
+				
+			</tabset>
+			</div>
+			
+		</div>
+		
+		<footer-form-input></footer-form-input>
+	</form>
+</div>
+
+

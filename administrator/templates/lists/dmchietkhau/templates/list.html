@@ -1,0 +1,35 @@
+﻿<stplistheader></stplistheader>
+<div class="table-responsive">
+	<table class ="table table-striped table-bordered">
+		<tr><th>#</th><th>Mã chiết khấu</th><th>Tên chiết khấu</th><th>tỷ lệ chiết khấu</th><th>tiền chiết khấu</th></tr>
+		<tr ng-repeat="r in list track by r._id">
+			<td width='50px'> <input type="checkbox" ng-model="r.sel"/> </td>
+			<td   style='cursor:pointer' ng-click='edit(r._id)'>
+				
+					{{ r.ma_ck }}
+				
+				
+			</td>
+			<td   style='cursor:pointer' ng-click='edit(r._id)'>
+				
+					{{ r.ten_ck }}
+				
+				
+			</td>
+			<td   style='cursor:pointer' ng-click='edit(r._id)'>
+				
+					{{ r.ty_le_ck|number:0 }}
+				
+				
+			</td>
+			<td   style='cursor:pointer' ng-click='edit(r._id)'>
+				
+					{{ r.tien_ck|number:0 }}
+				
+				
+			</td>
+			
+		</tr>
+	</table>
+</div>
+<ng-page></ng-page>
